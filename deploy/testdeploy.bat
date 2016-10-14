@@ -12,4 +12,3 @@ IF %var% GTR 0 (
 
 
 )
-pause
