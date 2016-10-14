@@ -68,7 +68,14 @@ public class ServletQuery extends HttpServlet
 				String fname = f.getPath().toLowerCase();
 				if (fname.endsWith(".png") || fname.endsWith(".jpg") || fname.endsWith(".gif"))
 				{
-					if (filenameContains==null || fname.contains(filenameContains))
+					boolean containsAll = true;
+					if (filenameContains!=null)
+					{
+						String[] keywords = filenameContains.split(" ");
+						containsAll = containsAll(fname, keywords);
+					}
+					
+					if (filenameContains==null || containsAll)
 					{
 						fname = f.getPath();
 						fname = fname.replace('\\', '/');
@@ -78,6 +85,18 @@ public class ServletQuery extends HttpServlet
 			}
 		}
 		return result;
+	}
+	
+	private boolean containsAll(String source, String[] keywords)
+	{
+		if (source==null) return false;
+		if (keywords==null || keywords.length==0) return true;
+		
+		for(String keyword:keywords)
+			if (source.contains(keyword)==false)
+				return false;
+		
+		return true;
 	}
 
 }
