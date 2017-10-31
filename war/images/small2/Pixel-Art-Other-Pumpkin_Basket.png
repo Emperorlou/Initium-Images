@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <meta name="robots" content="noindex" />
+    <meta name="keywords" content="images, funny pictures, twitter photo, tweet photo, image host, image upload, image sharing, image resize" />
+    <meta name="description" content="Imgur is home to the web's most popular image content, curated in real time by a dedicated community through commenting, voting and sharing." />
+    <meta http-equiv="X-UA-Compatible" content="IE=9;IE=8;" />
+    <!--[if lt IE 9]>
+        <meta http-equiv="cache-control" content="no-cache">
+        <meta http-equiv="pragma" content="no-cache">
+    <![endif]-->
+    <title>Imgur overloaded. Send kittens</title>
+    <link rel="icon" href="//imgur.com/include/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="//imgur.com/include/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="//s.imgur.com/include/css/overloaded.css?1361994242" type="text/css" />
+</head>
+<body>
+    <div class="fullwidth-row">
+        <div class="error-textrow">
+            <h1>Imgur is over capacity!</h1>
+            <p>Sorry! We're busy running around with our hair on fire because Imgur
+                is over capacity! This can happen when the site is under a very heavy
+                load, or while we're doing maintenance.
+                <br /><br />
+                Please <a href="/">try again</a> in a few minutes.
+            </p>
+        </div>
+        <div class="giraffe"></div>
+    </div>
+    <div class="nodisplay">
+        Nginx
+    </div>
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','__ga');
+
+        __ga('create', 'UA-6671908-2', 'auto');
+        __ga('send', 'pageview');
+    </script>
+</body>
+</html>
