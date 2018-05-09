@@ -1,3 +1,9 @@
 /*.ini
 classes
 logs
+/war/images/ui4/Thumbs.db
+/war/images/ui/Thumbs.db
+/war/images/ui/newui/Thumbs.db
+/war/images/ui3/Thumbs.db
+/war/images/2d/trees/*.db
+*.db
