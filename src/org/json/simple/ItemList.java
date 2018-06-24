@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
-import com.google.appengine.labs.repackaged.com.google.common.annotations.GwtIncompatible;
 
 /**
  * |a:b:c| => |a|,|b|,|c|
