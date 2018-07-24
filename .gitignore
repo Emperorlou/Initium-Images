@@ -11,3 +11,4 @@ logs
 /war/WEB-INF/lib/appengine-jsr107cache-1.9.64.jar
 /.settings
 /war/WEB-INF/lib/*.jar
+/war/META-INF/MANIFEST.MF
