@@ -10,7 +10,6 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import com.google.appengine.labs.repackaged.com.google.common.annotations.GwtIncompatible;
 
 /**
  * A JSON object. Key value pairs are unordered. JSONObject supports java.util.Map interface.

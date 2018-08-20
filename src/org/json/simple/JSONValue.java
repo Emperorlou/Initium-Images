@@ -13,7 +13,6 @@ import java.util.Map;
 import org.json.simple.parser.JSONParserFactory;
 import org.json.simple.parser.ParseException;
 
-import com.google.appengine.labs.repackaged.com.google.common.annotations.GwtIncompatible;
 
 
 /**

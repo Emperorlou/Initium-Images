@@ -1,0 +1,14 @@
+Get-ChildItem -Recurse . -Filter *.png | % {
+    $image = [System.Drawing.Image]::FromFile($_.FullName)
+    if ($image.width -gt 5 -and $image.height -gt 5) {
+        New-Object PSObject -Property @{
+		height_pixels = $image.Height
+		width_pixels = $image.Width
+		megapixels = ($image.Height * $image.Width)/1000/1000
+		megabytes = (($_.Length)/1024)/1024
+		name = $_.Name
+		fullname = $_.Fullname
+		date = $_.LastWriteTime
+        }
+    }
+} | Export-Csv '.\img.csv' -NoTypeInformation
