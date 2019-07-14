@@ -1,7 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <appengine-web-app xmlns="http://appengine.google.com/ns/1.0">
-  <application>initium-resources</application>
-  <version>1</version>
 
   <!--
     Allows App Engine to send multiple requests to one instance in parallel:
@@ -30,10 +28,10 @@
 
 <static-files>
 
-  <include path="/**" >
-    <http-header name="Access-Control-Allow-Origin"
-                 value="https://www.playinitium.com" />
+  <include path="/**">
+    <http-header name="Access-Control-Allow-Origin" value="https://www.playinitium.com"/>
   </include>
 
 </static-files>
+  <runtime>java8</runtime>
 </appengine-web-app>
