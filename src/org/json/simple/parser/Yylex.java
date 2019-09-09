@@ -2,7 +2,8 @@
 
 package org.json.simple.parser;
 
-import com.google.appengine.labs.repackaged.com.google.common.annotations.GwtIncompatible;
+import org.json.simple.GwtIncompatible;
+
 
 @GwtIncompatible
 class Yylex {

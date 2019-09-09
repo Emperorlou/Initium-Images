@@ -20,6 +20,8 @@ import org.json.simple.JSONArray;
 public class ServletQuery extends HttpServlet
 {
 	private static final long serialVersionUID = 8715060428325324298L;
+	private static final String[] imageFileTypes = new String[]{".png", ".jpg", ".gif"};
+	private static final String[] audioFileTypes = new String[]{".mp3", ".ogg", ".wav"};
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
@@ -31,7 +33,39 @@ public class ServletQuery extends HttpServlet
 			String filename = req.getParameter("term");
 			String callback = req.getParameter("callback");
 			
-			List<String> images = findImages(filename);
+			List<String> images = findFiles(filename, "images", imageFileTypes);
+			
+			JSONArray json = new JSONArray();
+			json.addAll(images);
+			
+			resp.setContentType("application/json");
+			PrintWriter out = resp.getWriter();
+			out.print(callback+"("+json.toJSONString()+")");
+			out.flush();
+			out.close();
+		}
+		else if ("audioSearch".equals(type))
+		{
+			String filename = req.getParameter("term");
+			String callback = req.getParameter("callback");
+			
+			List<String> images = findFiles(filename, "audio", audioFileTypes);
+			
+			JSONArray json = new JSONArray();
+			json.addAll(images);
+			
+			resp.setContentType("application/json");
+			PrintWriter out = resp.getWriter();
+			out.print(callback+"("+json.toJSONString()+")");
+			out.flush();
+			out.close();
+		}
+		else if ("musicSearch".equals(type))
+		{
+			String filename = req.getParameter("term");
+			String callback = req.getParameter("callback");
+			
+			List<String> images = findFiles(filename, "music", audioFileTypes);
 			
 			JSONArray json = new JSONArray();
 			json.addAll(images);
@@ -44,18 +78,13 @@ public class ServletQuery extends HttpServlet
 		}
 	}
 	
-	List<String> findImages()
-	{
-		return findImages(null);
-	}
 	
-	List<String> findImages(String filenameContains)
+	List<String> findFiles(String filenameContains, String baseFolder, String[] fileTypes)
 	{
 		if (filenameContains!=null)
 			filenameContains = filenameContains.toLowerCase();
 		
 		ArrayList<String> result = new ArrayList<String>();
-		String baseFolder = "images";
 		if (baseFolder!=null)
 		{
 			if (baseFolder.startsWith("/"))
@@ -66,21 +95,32 @@ public class ServletQuery extends HttpServlet
 			{
 				
 				String fname = f.getPath().toLowerCase();
-				if (fname.endsWith(".png") || fname.endsWith(".jpg") || fname.endsWith(".gif"))
+				
+				boolean goodExtension = false;
+				for(String ext:fileTypes)
 				{
-					boolean containsAll = true;
-					if (filenameContains!=null)
+					if (fname.endsWith(ext))
 					{
-						String[] keywords = filenameContains.split(" ");
-						containsAll = containsAll(fname, keywords);
+						goodExtension = true;
+						break;
 					}
-					
-					if (filenameContains==null || containsAll)
-					{
-						fname = f.getPath();
-						fname = fname.replace('\\', '/');
-						result.add(fname);
-					}
+				}
+				
+				if (goodExtension==false) continue;
+
+				
+				boolean containsAll = true;
+				if (filenameContains!=null)
+				{
+					String[] keywords = filenameContains.split(" ");
+					containsAll = containsAll(fname, keywords);
+				}
+				
+				if (filenameContains==null || containsAll)
+				{
+					fname = f.getPath();
+					fname = fname.replace('\\', '/');
+					result.add(fname);
 				}
 			}
 		}
